@@ -1,17 +1,17 @@
 import { Body } from "@components/typography";
 import React from "react";
-import { CardTitle, CardWrapper } from "./card.component.styled";
+import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.styled";
 import { strings } from "@components/constants";
 
-interface CardProps {
+interface KanbanCardProps {
   title?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ title }) => {
+// TODO - Fix this component
+export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
   const [cardTitle, setCardTitle] = React.useState<string>();
 
   function handleChange(event: React.ChangeEvent<HTMLDivElement>) {
-    console.log(event.target.textContent);
     setCardTitle(event.target.textContent ?? "");
   }
 
@@ -22,19 +22,19 @@ export const Card: React.FC<CardProps> = ({ title }) => {
   }
 
   return (
-    <CardWrapper>
+    <KabanCardWrapper>
       {title ? (
         <Body>{title}</Body>
       ) : (
-        <CardTitle
+        <KanbanCardTitle
           contentEditable="true"
           placeholder={strings.card.placeholder}
           onInput={handleChange}
           onFocus={handleFocus}
         >
           {cardTitle ?? strings.card.placeholder}
-        </CardTitle>
+        </KanbanCardTitle>
       )}
-    </CardWrapper>
+    </KabanCardWrapper>
   );
 };
