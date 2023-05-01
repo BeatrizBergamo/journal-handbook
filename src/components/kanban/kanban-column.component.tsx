@@ -36,7 +36,6 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ label, icon, color, 
           </Flex.Item>
         )}
       </Flex>
-      <Separator size={Spacing.Small} />
       {children}
     </KanbanColumnWrapper>
   );

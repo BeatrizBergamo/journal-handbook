@@ -12,5 +12,5 @@ export const LayoutMainWrapper = styled.main`
   height: 100%;
   display: flex;
   background-color: ${Colors.White};
-  padding-inline: ${Spacing.Medium};
+  padding-inline: ${Spacing.Large};
 `;

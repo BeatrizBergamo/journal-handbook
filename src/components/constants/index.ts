@@ -18,6 +18,7 @@ export class Colors {
   static readonly GrayDark = "#525252";
   static readonly GrayXDark = "#161616";
 
+  static readonly BlueXLight = "#21B2FB";
   static readonly BlueLight = "#0038D9";
   static readonly Blue = "#8093B3";
   static readonly BlueDark = "#0B1D51";

@@ -3,7 +3,7 @@ import { Kanban, KanbanColumn } from "@components/kanban";
 
 export const KanbanContainer = () => {
   return (
-    <Kanban>
+    <Kanban title={strings.wishlist.title}>
       <KanbanColumn label={strings.kanban.columns[0]} />
       <KanbanColumn label={strings.kanban.columns[1]} color={Colors.BlueLight} />
       <KanbanColumn label={strings.kanban.columns[2]} color={Colors.Green} />
