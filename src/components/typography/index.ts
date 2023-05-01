@@ -33,3 +33,10 @@ export const Label = styled.label<{ color?: string }>`
   font-weight: ${FontWeight.Regular};
   color: ${(props) => props.color ?? Colors.GrayDark};
 `;
+
+export const Body = styled.p`
+  font-size: ${FontSize.XSmall};
+  font-family: ${FontFamily.Primary};
+  font-weight: ${FontWeight.Medium};
+  color: ${Colors.Gray};
+`;

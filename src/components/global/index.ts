@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
   /* p,h1,h2,h3,h4,h5,label,span {
     cursor: default;
   } */
