@@ -1,3 +1,5 @@
+export * from "./strings";
+
 export enum Spacing {
   XSmall = "4px",
   Small = "8px",
@@ -6,19 +8,21 @@ export enum Spacing {
   XLarge = "64px",
 }
 
-export enum Colors {
-  Black = "#0C0C0C",
-  White = "#F9F9F9",
+export class Colors {
+  static readonly Black = "#0C0C0C";
+  static readonly White = "#FFF";
 
-  GrayXLight = "#F4F6F8",
-  GrayLight = "#DFE4EC",
-  Gray = "#C0C0C0",
-  GrayDark = "#525252",
-  GrayXDark = "#161616",
+  static readonly GrayXLight = "#F4F6F8";
+  static readonly GrayLight = "#DFE4EC";
+  static readonly Gray = "#C0C0C0";
+  static readonly GrayDark = "#525252";
+  static readonly GrayXDark = "#161616";
 
-  BlueLight = "#0038D9",
-  Blue = "#8093B3",
-  BlueDark = "#0B1D51",
+  static readonly BlueLight = "#0038D9";
+  static readonly Blue = "#8093B3";
+  static readonly BlueDark = "#0B1D51";
+
+  static readonly Green = "#008000";
 }
 
 export const Border = {
@@ -49,5 +53,5 @@ export enum FontWeight {
 }
 
 export enum FontFamily {
-  Primary = "Arial",
+  Primary = "system-ui",
 }

@@ -14,8 +14,10 @@ const FlexStyled = styled.div`
 `;
 
 const FlexItem = styled.div<FlexItemProps>`
-  justify-self: ${(props) => props.vAlign ?? "stretch"};
-  align-self: ${(props) => props.hAlign ?? "center"};
+  display: flex;
+  flex-direction: column;
+  justify-content: ${(props) => props.hAlign ?? "stretch"};
+  align-items: ${(props) => props.vAlign ?? "center"};
   flex: ${(props) => (props.noGrow ? null : props.flex ?? 1)};
 `;
 
