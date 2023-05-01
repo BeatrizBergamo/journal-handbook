@@ -20,7 +20,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ title, icon, selected 
     <SidebarItemWrapper>
       <Flex>
         <Flex.Item noGrow hAlign="center">
-          <FaIcon.ChevronRight size={"xs"} color={color} />
+          <FaIcon.ChevronRight size="2xs" color={color} />
         </Flex.Item>
         <Flex.Separator size={Spacing.Small} />
         <Flex.Item noGrow>
