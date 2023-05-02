@@ -21,7 +21,7 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3<{ color?: Colors }>`
-  color: ${(props) => props.color ?? Colors.Gray};
+  color: ${(props) => props.color ?? Colors.GrayDark};
   font-size: ${FontSize.Small};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Regular};
@@ -38,5 +38,12 @@ export const Body = styled.p`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Medium};
+  color: ${Colors.Gray};
+`;
+
+export const BodySecondary = styled.p`
+  font-size: ${FontSize.XSmall};
+  font-family: ${FontFamily.Primary};
+  font-weight: ${FontWeight.Regular};
   color: ${Colors.Gray};
 `;

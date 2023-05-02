@@ -6,7 +6,7 @@ interface SidebarWrapperProps {
 }
 
 export const SidebarWrapper = styled.aside<SidebarWrapperProps>`
-  width: ${(props) => (props.short ? "50px" : "15%")};
+  min-width: ${(props) => (props.short ? "50px" : "15%")};
   height: 100%;
   background-color: ${Colors.GrayXLight};
   border-right: ${Border.Width} solid ${Colors.GrayLight};
