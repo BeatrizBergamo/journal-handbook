@@ -33,7 +33,7 @@ export const Border = {
 };
 
 export enum Shadow {
-  Light = "0px 2px 3px 2px rgba(0, 0, 0, 0.15)",
+  Light = "0px 1px 1px 1px rgba(0, 0, 0, 0.1)",
   Medium = "0px 2px 8px 5px rgba(0, 0, 0, 0.15)",
 }
 

@@ -1,10 +1,9 @@
+import { Colors } from "@components/constants";
+import { FaIcon } from "@components/fa-icon";
+import { Flex } from "@components/flex";
 import { Label } from "@components/typography";
 import React from "react";
 import { KanbanColumnWrapper } from "./kanban.component.styled";
-import { Flex } from "@components/flex";
-import { FaIcon } from "@components/fa-icon";
-import { Colors, Spacing } from "@components/constants";
-import { Separator } from "@components/box";
 
 interface KanbanColumnProps {
   label: string;
