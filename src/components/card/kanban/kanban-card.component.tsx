@@ -7,18 +7,12 @@ interface KanbanCardProps {
   title?: string;
 }
 
-// TODO - Fix this component
 export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
   const [cardTitle, setCardTitle] = React.useState<string>();
+  const cardRef = React.useRef<HTMLDivElement>({} as HTMLDivElement);
 
   function handleChange(event: React.ChangeEvent<HTMLDivElement>) {
-    setCardTitle(event.target.textContent ?? "");
-  }
-
-  function handleFocus(event: React.FocusEvent<HTMLDivElement>) {
-    if (!cardTitle) {
-      event.currentTarget.textContent = "";
-    }
+    setCardTitle(event.target.innerHTML ?? "");
   }
 
   return (
@@ -27,13 +21,12 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
         <Body>{title}</Body>
       ) : (
         <KanbanCardTitle
-          contentEditable="true"
+          selected={!cardTitle}
+          ref={cardRef}
           placeholder={strings.card.placeholder}
+          contentEditable
           onInput={handleChange}
-          onFocus={handleFocus}
-        >
-          {cardTitle ?? strings.card.placeholder}
-        </KanbanCardTitle>
+        />
       )}
     </KabanCardWrapper>
   );

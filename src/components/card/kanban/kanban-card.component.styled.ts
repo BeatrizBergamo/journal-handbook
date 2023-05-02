@@ -8,7 +8,7 @@ export const KabanCardWrapper = styled.div`
   box-shadow: ${Shadow.Light};
 `;
 
-export const KanbanCardTitle = styled.div`
+export const KanbanCardTitle = styled.div<{ selected: boolean }>`
   border: none;
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
@@ -18,4 +18,12 @@ export const KanbanCardTitle = styled.div`
   &:focus {
     outline: none;
   }
+
+  ${(props) =>
+    props.selected &&
+    `
+    &::after {
+      content: attr(placeholder);
+    }
+  `}
 `;
