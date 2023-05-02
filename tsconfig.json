@@ -28,6 +28,8 @@
       "@domain/*": ["domain/*"],
       "@assets": ["assets"],
       "@assets/*": ["assets/*"],
+      "@containers": ["containers"],
+      "@containers/*": ["containers/*"],
       "@components": ["components"],
       "@components/*": ["components/*"]
     }
