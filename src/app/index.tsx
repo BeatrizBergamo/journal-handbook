@@ -13,8 +13,8 @@ export const App: React.FC = () => {
         <SidebarContainer />
         <LayoutMain>
           {/* <Router /> */}
-          {/* <WishlistPage /> */}
-          <KanbanContainer />
+          <WishlistPage />
+          {/* <KanbanContainer /> */}
         </LayoutMain>
       </Layout>
     </React.Fragment>

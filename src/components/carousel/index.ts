@@ -1,31 +1,25 @@
-import { Spacing } from "@components/constants";
+import { Border, Colors, Spacing } from "@components/constants";
 import styled from "styled-components";
 
 export const Carousel = styled.div`
   display: flex;
+  width: 100%;
   gap: ${Spacing.Large};
   overflow-x: auto;
-  width: auto;
   padding: ${Spacing.Small};
 
-  /* width */
   &::-webkit-scrollbar {
     height: 10px;
-    background: #f1f1f1;
+    background: ${Colors.GrayXLight};
+    border-radius: ${Border.RadiusLarge};
   }
 
-  /* Track */
-  &::-webkit-scrollbar-track {
-    /* background: #555; */
-  }
-
-  /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #555;
+    background: ${Colors.GrayLight};
+    border-radius: ${Border.RadiusLarge};
   }
 
-  /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: ${Colors.Gray};
   }
 `;
