@@ -1,18 +1,25 @@
-import { CreateWishlistCard, WishlistCard } from "@components/card";
+import { CreateWishlistCard } from "@components/card";
 import { Carousel } from "@components/carousel";
-import { Spacing, strings } from "@components/constants";
+import { strings } from "@components/constants";
 import { Flex } from "@components/flex";
-import { H1, H2 } from "@components/typography";
+import { Modal } from "@components/modal";
+import { H1 } from "@components/typography";
+import React from "react";
 
 export const WishlistPage = () => {
+  const [show, setShow] = React.useState(false);
+
   return (
     <>
       <H1>{strings.wishlist.title}</H1>
       <Carousel>
         <Flex.Item noGrow>
-          <CreateWishlistCard />
+          <CreateWishlistCard onClick={() => setShow(true)} />
         </Flex.Item>
       </Carousel>
+      <Modal show={show} onClose={setShow} type="aside">
+        {/* TODO - Implement into modal to create the form witch witll create a new category */}
+      </Modal>
     </>
   );
 };

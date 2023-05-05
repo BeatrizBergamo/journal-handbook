@@ -8,7 +8,7 @@ export const useClickOutsideToClose = (ref: React.MutableRefObject<any>, closeFu
       }
     }
 
-    ref.current.addEventListener("mousedown", handleClickOutside);
-    return () => ref.current.removeEventListener("mousedown", handleClickOutside);
-  });
+    document.addEventListener?.("mousedown", handleClickOutside);
+    return () => document.removeEventListener?.("mousedown", handleClickOutside);
+  }, [ref]);
 };

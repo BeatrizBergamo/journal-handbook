@@ -11,10 +11,9 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ type, show, onClose, children }) => {
-  const asideRef = React.useRef<HTMLDialogElement>(null);
-  const normalRef = React.useRef<HTMLDialogElement>(null);
+  const dialogRef = React.useRef<HTMLDialogElement>(null);
 
-  useClickOutsideToClose(show ? asideRef ?? normalRef : { current: {} }, handleClose);
+  useClickOutsideToClose(dialogRef, handleClose);
 
   function handleClose() {
     onClose(false);
@@ -26,12 +25,12 @@ export const Modal: React.FC<ModalProps> = ({ type, show, onClose, children }) =
         createPortal(
           <ModalBgWrapper>
             {type === "aside" ? (
-              <AsideModalWrapper ref={asideRef} show={show}>
+              <AsideModalWrapper ref={dialogRef} show={show}>
                 <ModalCloseButton onClick={handleClose} />
                 {children}
               </AsideModalWrapper>
             ) : (
-              <ModalWrapper ref={normalRef} show={show}>
+              <ModalWrapper ref={dialogRef} show={show}>
                 <ModalCloseButton onClick={handleClose} />
                 {children}
               </ModalWrapper>
