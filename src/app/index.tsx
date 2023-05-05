@@ -1,9 +1,9 @@
 import * as React from "react";
+
 import { GlobalStyles } from "@components/global";
 import { Layout, LayoutMain } from "@components/layout";
 import { SidebarContainer } from "@containers/sidebar";
-import { KanbanContainer } from "@containers/kanban";
-import { WishlistPage } from "modules/wishlist";
+import { Router } from "modules/router";
 
 export const App: React.FC = () => {
   return (
@@ -12,9 +12,7 @@ export const App: React.FC = () => {
       <Layout>
         <SidebarContainer />
         <LayoutMain>
-          {/* <Router /> */}
-          <WishlistPage />
-          {/* <KanbanContainer /> */}
+          <Router />
         </LayoutMain>
       </Layout>
     </React.Fragment>
