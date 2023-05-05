@@ -13,7 +13,9 @@ export const WishlistCardWrapper = styled.div`
   height: ${wishlistCardHeight};
   width: ${wishlistCardWidth};
   overflow: hidden;
+  cursor: pointer;
 `;
+
 export const WishlistCardContentWrapper = styled.div`
   flex: 3;
   padding: ${Spacing.Small};

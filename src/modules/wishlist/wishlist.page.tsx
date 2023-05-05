@@ -10,15 +10,6 @@ export const WishlistPage = () => {
       <H1>{strings.wishlist.title}</H1>
       <Carousel>
         <Flex.Item noGrow>
-          <WishlistCard title="Category 1" description="Description of category 1" />
-        </Flex.Item>
-        <Flex.Item noGrow>
-          <WishlistCard title="Category 2" description="Description of category 2" />
-        </Flex.Item>
-        <Flex.Item noGrow>
-          <WishlistCard title="Category 3" description="Description of category 3" />
-        </Flex.Item>
-        <Flex.Item noGrow>
           <CreateWishlistCard />
         </Flex.Item>
       </Carousel>

@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 export const Carousel = styled.div`
   display: flex;
-  width: 100%;
   gap: ${Spacing.Large};
-  overflow-x: auto;
+  width: 100%;
   padding: ${Spacing.Small};
+  overflow-x: auto;
 
   &::-webkit-scrollbar {
     height: 10px;

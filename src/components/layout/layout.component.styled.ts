@@ -8,10 +8,10 @@ export const LayoutWrapper = styled.div`
 `;
 
 export const LayoutMainWrapper = styled.main`
-  width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   background-color: ${Colors.White};
   padding-inline: ${Spacing.Large};
+  overflow: hidden;
 `;

@@ -1,8 +1,6 @@
+import { Colors } from "@components/constants";
 import styled from "styled-components";
 import { WishlistCardWrapper } from "./wishlist-card.component.styled";
-import { Colors } from "@components/constants";
-import { FaIcon } from "@components/fa-icon";
-import { Body } from "@components/typography";
 
 export const CreateWishlistCardWrapper = styled(WishlistCardWrapper)`
   display: flex;
