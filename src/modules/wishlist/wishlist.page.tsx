@@ -17,7 +17,7 @@ export const WishlistPage = () => {
           <CreateWishlistCard onClick={() => setShow(true)} />
         </Flex.Item>
       </Carousel>
-      <Modal show={show} onClose={setShow} type="aside">
+      <Modal show={show} onClose={setShow} type="normal">
         {/* TODO - Implement into modal to create the form witch witll create a new category */}
       </Modal>
     </>
