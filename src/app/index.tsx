@@ -3,6 +3,7 @@ import { GlobalStyles } from "@components/global";
 import { Layout, LayoutMain } from "@components/layout";
 import { SidebarContainer } from "@containers/sidebar";
 import { KanbanContainer } from "@containers/kanban";
+import { WishlistPage } from "modules/wishlist";
 
 export const App: React.FC = () => {
   return (
@@ -11,7 +12,9 @@ export const App: React.FC = () => {
       <Layout>
         <SidebarContainer />
         <LayoutMain>
-          <KanbanContainer />
+          {/* <Router /> */}
+          <WishlistPage />
+          {/* <KanbanContainer /> */}
         </LayoutMain>
       </Layout>
     </React.Fragment>
