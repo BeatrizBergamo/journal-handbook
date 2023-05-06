@@ -1,4 +1,5 @@
-import { Border, Colors, Shadow, Spacing } from "@components/constants";
+import { Border, Colors, Spacing } from "@components/constants";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 interface SidebarWrapperProps {
@@ -14,7 +15,6 @@ export const SidebarWrapper = styled.aside<SidebarWrapperProps>`
   padding-inline: ${Spacing.Small};
 `;
 
-export const SidebarItemWrapper = styled.div`
-  margin-block: ${Spacing.Small};
-  cursor: pointer;
+export const SidebarItemWrapper = styled(NavLink)`
+  text-decoration: none;
 `;
