@@ -5,11 +5,15 @@ import { Body } from "@components/typography";
 import { CreateWishlistCardWrapper } from "./create-wishlist-card.component.styled";
 import React from "react";
 
-export const CreateWishlistCard = () => {
+export const CreateWishlistCard = ({ onClick }: { onClick: VoidFunction }) => {
   const [hover, setHover] = React.useState(false);
 
   return (
-    <CreateWishlistCardWrapper onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <CreateWishlistCardWrapper
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={onClick}
+    >
       <FaIcon.Plus size="4x" color={hover ? Colors.GrayDark : Colors.Gray} />
       <Flex>
         <Flex.Item>

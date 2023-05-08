@@ -24,6 +24,7 @@ export class Colors {
   static readonly BlueDark = "#0B1D51";
 
   static readonly Green = "#008000";
+  static readonly GrayTransparent = "rgba(10, 10, 10, 0.5)";
 }
 
 export const Border = {
