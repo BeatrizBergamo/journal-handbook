@@ -10,6 +10,9 @@ config({ path: path.resolve(__dirname, ".env") });
 module.exports = {
   entry: { main: "./src/index.tsx" },
   mode: "development",
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
@@ -55,5 +58,6 @@ module.exports = {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
 };
