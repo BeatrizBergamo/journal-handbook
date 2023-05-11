@@ -9,7 +9,7 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route path="wishlist" element={<WishlistPage />} />
-          <Route path="kanban/:categoryId" element={<KanbanContainer />} />
+          <Route path="wishlist/kanban/:categoryId" element={<KanbanContainer />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
