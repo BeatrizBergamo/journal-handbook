@@ -8,11 +8,12 @@ interface WishlistCardProps {
   title: string;
   description: string;
   imageUrl?: string;
+  onClick?: VoidFunction;
 }
 
-export const WishlistCard: React.FC<WishlistCardProps> = ({ title, description, imageUrl }) => {
+export const WishlistCard: React.FC<WishlistCardProps> = ({ title, description, imageUrl, onClick }) => {
   return (
-    <WishlistCardWrapper>
+    <WishlistCardWrapper onClick={onClick}>
       <CardImage src={imageUrl} />
       <WishlistCardContentWrapper>
         <H3>{title}</H3>
