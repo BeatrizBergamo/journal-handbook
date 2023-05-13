@@ -1,6 +1,6 @@
-import React from "react";
-import { FormContext, FormData } from "./form.context";
-import { FormField } from "./form-field.component";
+import React from 'react';
+import { FormContext, FormData, FormFieldContextProps } from './form.context';
+import { FormField } from './form-field.component';
 
 interface FormProps {
   onSubmit(formData: FormData): void;
@@ -8,44 +8,53 @@ interface FormProps {
 }
 
 const FormComponent = ({ children, onSubmit }: FormProps) => {
-  const formData = React.useRef<{ [fieldName: string]: any }>({});
+  const [formData, setFormData] = React.useState<{ [fieldName: string]: FormFieldContextProps }>({});
 
   const register = React.useCallback(
-    (field: any) => {
-      formData.current[field.props.name] = field;
+    (field: FormFieldContextProps) => {
+      setFormData((prev) => ({ ...prev, [field.name]: field }));
     },
-    [formData]
+    [setFormData],
   );
 
   const unregister = React.useCallback(
-    (field: any) => {
-      delete formData.current[field.props.name];
+    (field: FormFieldContextProps) => {
+      setFormData((prev) =>
+        Object.keys(prev).reduce(
+          (agg, name) => (name !== field.name ? { ...agg, [name]: prev[name] } : { ...agg }),
+          {},
+        ),
+      );
     },
-    [formData]
+    [setFormData],
   );
 
-  function handleSubmit() {
-    const formData = getFormData();
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
 
-    onSubmit(formData);
+    const data = getFormData();
+
+    onSubmit(data);
   }
 
   function getFormData(): FormData<any> {
-    return Object.keys(formData.current).reduce<FormData<any>>(
+    return Object.keys(formData).reduce<FormData<any>>(
       (form, name) => {
-        const field = formData.current[name];
+        const field = formData[name];
 
-        if (field.props.validate) {
-          const valid = field.props.validate(field.props.value);
-          if (valid.message) {
-            form.errors[name] = valid.message;
+        if (field.validators) {
+          const [error] = field.validators.map((validate) => validate(field.value)).filter(Boolean);
+
+          if (error?.message) {
+            form.errors[name] = error.message;
           }
+          field.onError(error?.message);
         }
 
-        form.data[name] = field.props.value;
+        form.data[name] = field.value;
         return form;
       },
-      { data: null, errors: null }
+      { data: {}, errors: {} },
     );
   }
 
