@@ -23,6 +23,7 @@ export class Colors {
   static readonly Blue = "#8093B3";
   static readonly BlueDark = "#0B1D51";
 
+  static readonly Alert = "#B31010";
   static readonly Green = "#008000";
   static readonly GrayTransparent = "rgba(10, 10, 10, 0.5)";
 }
