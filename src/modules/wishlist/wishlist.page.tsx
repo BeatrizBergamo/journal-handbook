@@ -5,6 +5,7 @@ import { Carousel } from "@components/carousel";
 import { strings } from "@components/constants";
 import { Modal } from "@components/modal";
 import { H1 } from "@components/typography";
+import { WishlistModalContainer } from "@containers/wishlist-modal";
 import { useNavigate } from "react-router-dom";
 
 export const WishlistPage = () => {
@@ -19,11 +20,11 @@ export const WishlistPage = () => {
     <>
       <H1>{strings.wishlist.title}</H1>
       <Carousel>
-        <WishlistCard title="Categoria 1" description="Descricao da categoria 1" onClick={handleClick} />
+        <WishlistCard title='Categoria 1' description='Descricao da categoria 1' onClick={handleClick} />
         <CreateWishlistCard onClick={() => setShow(true)} />
       </Carousel>
-      <Modal show={show} onClose={setShow} type="normal">
-        {/* TODO - Implement into modal to create the form witch witll create a new category */}
+      <Modal show={show} onClose={setShow} type='normal'>
+        <WishlistModalContainer />
       </Modal>
     </>
   );
