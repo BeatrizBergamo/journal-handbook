@@ -37,7 +37,7 @@ export const Label = styled.label<{ color?: string }>`
 export const Caption = styled.span`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
-  font-weight: ${FontWeight.Lighter};
+  font-weight: ${FontWeight.Regular};
   color: ${Colors.Alert};
 `;
 

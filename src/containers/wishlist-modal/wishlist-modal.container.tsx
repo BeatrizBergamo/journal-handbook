@@ -1,20 +1,28 @@
 import { Separator } from "@components/box";
+import { Button } from "@components/button";
 import { strings } from "@components/constants";
+import { Flex } from "@components/flex";
 import { Form, FormData } from "@components/form";
 import { TextAreaField, TextField } from "@components/text-field";
 import { H2 } from "@components/typography";
+import React from "react";
 
-export const WishlistModalContainer = () => {
+interface WishlistModalContainerProps {
+  onCompleted(data: { title: string; description?: string }): void;
+  onCancel(open: false): void;
+}
+
+export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = ({ onCompleted, onCancel }) => {
   function handleSubmit(formData: FormData<{ title: string; description?: string }>) {
-    console.log(formData);
+    if (Object.keys(formData.errors).length === 0) {
+      onCompleted(formData.data);
+    }
   }
 
   function required(value: string | number | null) {
     if (!value) {
-      return { message: "Campo obrigatório!" };
+      return { message: strings.form.required };
     }
-
-    return null;
   }
 
   return (
@@ -28,6 +36,21 @@ export const WishlistModalContainer = () => {
         <Form.Field name="description" label={strings.wishlist.modal.label.description}>
           <TextAreaField resizable={false} placeholder={strings.wishlist.modal.placeholder.description} />
         </Form.Field>
+        <Flex>
+          <Flex.Item />
+          <Flex.Item noGrow>
+            <Button variant="callToAction" type="submit">
+              {strings.button.confirm}
+            </Button>
+          </Flex.Item>
+          <Flex.Separator />
+          <Flex.Item noGrow>
+            <Button variant="neutral" onClick={() => onCancel(false)}>
+              {strings.button.cancel}
+            </Button>
+          </Flex.Item>
+          <Flex.Item />
+        </Flex>
       </Form>
     </>
   );

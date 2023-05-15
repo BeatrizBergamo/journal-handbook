@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface FormData<T = any> {
   data: T;
@@ -15,7 +15,7 @@ export const FormContext = React.createContext<FormContextProps>({
   unregister: () => null,
 });
 
-export type Validator = (value: number | string | null) => { message: string } | null;
+export type Validator = (value: number | string | null) => { message: string } | undefined | null;
 
 export interface FormFieldContextProps {
   name: string;

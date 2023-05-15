@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 const buttonHeight = "32px";
 
-type ButtonVariants = "primary" | "secondary" | "callToAction";
+type ButtonVariants = "primary" | "secondary" | "callToAction" | "neutral";
 
 const buttonVariants: Record<ButtonVariants, { bg: string; action: string; border: string; text: string }> = {
   primary: { bg: Colors.Blue, action: Colors.BlueDark, border: Colors.Blue, text: Colors.White },
   secondary: { bg: Colors.GrayXLight, action: Colors.Blue, border: Colors.Blue, text: Colors.GrayDark },
   callToAction: { bg: Colors.BlueXLight, action: Colors.BlueXLight, border: Colors.BlueXLight, text: Colors.White },
+  neutral: { bg: Colors.White, action: Colors.GrayLight, border: Colors.GrayLight, text: Colors.Gray },
 };
 
 interface ButtonProps {
@@ -36,9 +37,13 @@ export const Button = styled.button<ButtonProps>`
     return `
       color: ${variant.text};
       background-color: ${variant.bg};
-      border: ${variant.border} solid 2px;
+      border: ${variant.border} solid ${Border.Width};
       
       &:active {
+        background-color: ${variant.action};
+      }
+      
+      &:hover {
         background-color: ${variant.action};
       }
     `;
