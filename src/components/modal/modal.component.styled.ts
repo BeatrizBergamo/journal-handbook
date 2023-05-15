@@ -13,15 +13,15 @@ export const ModalBgWrapper = styled.div`
   overflow: hidden;
 `;
 
-const modalWidth = "250px";
-const modalHeight = "300px";
+const modalWidth = "350px";
+const modalHeight = "320px";
 
 export const ModalWrapper = styled.dialog<{ show: boolean }>`
   position: absolute;
   top: calc(${Spacing.Large});
   left: calc(50% - (${modalWidth} / 2));
   width: ${modalWidth};
-  height: ${modalHeight};
+  min-height: ${modalHeight};
   display: flex;
   flex-direction: column;
   padding: ${Spacing.Medium};

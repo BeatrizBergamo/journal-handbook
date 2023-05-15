@@ -1,9 +1,11 @@
-import { Separator } from '@components/box';
-import { Spacing } from '@components/constants';
-import { Caption, Label } from '@components/typography';
-import React from 'react';
-import { FormFieldWrapper } from './form-field.component.styled';
-import { FormContext, FormFieldContext, FormFieldContextProps, Validator } from './form.context';
+import React from "react";
+
+import { Separator } from "@components/box";
+import { Spacing } from "@components/constants";
+import { Caption, Label } from "@components/typography";
+import { FormFieldWrapper } from "./form-field.component.styled";
+import { Validator } from "./form-validators";
+import { FormContext, FormFieldContext, FormFieldContextProps } from "./form.context";
 
 interface FormFieldProps {
   name: string;
@@ -17,7 +19,7 @@ export const FormField: React.FC<FormFieldProps> = (props) => {
   const [error, setError] = React.useState<string>();
 
   if (!formContext) {
-    throw new Error('FormField must be used with Form component');
+    throw new Error("FormField must be used with Form component");
   }
 
   const [value, setValue] = React.useState<number | string | null>(null);
