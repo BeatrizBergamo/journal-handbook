@@ -28,7 +28,7 @@ export const H3 = styled.h3<{ color?: Colors }>`
 `;
 
 export const Label = styled.label<{ color?: string }>`
-  font-size: ${FontSize.XSmall};
+  font-size: ${FontSize.Small};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Regular};
   color: ${(props) => props.color ?? Colors.GrayDark};

@@ -5,8 +5,8 @@ export const strings = {
     modal: {
       title: "Nova categoria",
       label: {
-        title: "Título da cagegoria",
-        description: "Descrição da categoria",
+        title: "Título",
+        description: "Descrição",
       },
       placeholder: {
         title: "",
