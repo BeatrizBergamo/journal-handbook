@@ -12,7 +12,7 @@ export const WishlistPage = () => {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/kanban/1", { replace: true });
+    navigate("/wishlist/kanban/1", { replace: true });
   }
 
   return (

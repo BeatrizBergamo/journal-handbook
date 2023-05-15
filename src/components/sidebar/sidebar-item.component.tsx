@@ -6,15 +6,22 @@ import { H3 } from "@components/typography";
 import { SidebarItemWrapper } from "./sidebar.component.styled";
 import { Colors, Spacing } from "@components/constants";
 import { Separator } from "@components/box";
+import { useLocation } from "react-router-dom";
 
 interface SidebarItemProps {
   title: string;
   icon: keyof typeof FaIcon;
-  selected?: boolean;
   path: string;
 }
 
-export const SidebarItem: React.FC<SidebarItemProps> = ({ title, icon, selected, path }) => {
+export const SidebarItem: React.FC<SidebarItemProps> = ({ title, icon, path }) => {
+  const { pathname } = useLocation();
+
+  let selected = false;
+  if (pathname.includes(path)) {
+    selected = true;
+  }
+
   const Icon = FaIcon[icon];
   const color = selected ? Colors.GrayDark : Colors.Gray;
 
