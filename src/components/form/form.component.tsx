@@ -1,6 +1,6 @@
-import React from 'react';
-import { FormContext, FormData, FormFieldContextProps } from './form.context';
-import { FormField } from './form-field.component';
+import React from "react";
+import { FormContext, FormData, FormFieldContextProps } from "./form.context";
+import { FormField } from "./form-field.component";
 
 interface FormProps {
   onSubmit(formData: FormData): void;

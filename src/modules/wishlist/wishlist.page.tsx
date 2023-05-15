@@ -7,14 +7,15 @@ import { Modal } from "@components/modal";
 import { H1 } from "@components/typography";
 import { WishlistModalContainer } from "@containers/wishlist-modal";
 import { useNavigate } from "react-router-dom";
+import { WishlistCategoryModel } from "@domain/model";
 
 export const WishlistPage = () => {
   const [show, setShow] = React.useState(false);
-  const [cards, setCards] = React.useState<any[]>([]);
+  const [cards, setCards] = React.useState<WishlistCategoryModel[]>([]);
   const navigate = useNavigate();
 
-  function handleClick() {
-    navigate("/wishlist/kanban/1", { replace: true });
+  function handleClick(categoryId: string) {
+    navigate(`/wishlist/kanban/${categoryId}`, { replace: true });
   }
 
   function handleCreateCard(data: { title: string; description?: string }) {
@@ -31,9 +32,7 @@ export const WishlistPage = () => {
         ))}
         <CreateWishlistCard onClick={() => setShow(true)} />
       </Carousel>
-      <Modal show={show} onClose={setShow} type="normal">
-        <WishlistModalContainer onCancel={setShow} onCompleted={handleCreateCard} />
-      </Modal>
+      <WishlistModalContainer show={show} onCancel={setShow} onCompleted={handleCreateCard} />
     </>
   );
 };

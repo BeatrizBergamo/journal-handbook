@@ -18,7 +18,7 @@ export const strings = {
   kanban: { columns: ["To-do", "In Progress", "Completed"], addColumn: "Nova coluna" },
   timeline: { title: "Linha do tempo", sidebar: "Linha do tempo" },
   card: { placeholder: "Digite o título...", assignes: "Adicionar dono" },
-  form: { required: "Campo obrigatório." },
+  form: { validators: { required: "Campo obrigatório." } },
   button: {
     confirm: "Confirmar",
     cancel: "Cancelar",

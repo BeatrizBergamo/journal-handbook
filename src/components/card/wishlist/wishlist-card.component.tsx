@@ -6,19 +6,19 @@ import { Spacing } from "@components/constants";
 
 interface WishlistCardProps {
   title: string;
-  description: string;
+  description?: string;
   imageUrl?: string;
-  onClick?: VoidFunction;
+  onClick(title: string): void;
 }
 
 export const WishlistCard: React.FC<WishlistCardProps> = ({ title, description, imageUrl, onClick }) => {
   return (
-    <WishlistCardWrapper onClick={onClick}>
+    <WishlistCardWrapper onClick={() => onClick(title)}>
       <CardImage src={imageUrl} />
       <WishlistCardContentWrapper>
         <H3>{title}</H3>
         <Separator size={Spacing.Small} />
-        <BodySecondary>{description}</BodySecondary>
+        {description && <BodySecondary>{description}</BodySecondary>}
       </WishlistCardContentWrapper>
     </WishlistCardWrapper>
   );

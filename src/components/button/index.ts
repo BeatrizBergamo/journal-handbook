@@ -9,7 +9,7 @@ const buttonVariants: Record<ButtonVariants, { bg: string; action: string; borde
   primary: { bg: Colors.Blue, action: Colors.BlueDark, border: Colors.Blue, text: Colors.White },
   secondary: { bg: Colors.GrayXLight, action: Colors.Blue, border: Colors.Blue, text: Colors.GrayDark },
   callToAction: { bg: Colors.BlueXLight, action: Colors.BlueXLight, border: Colors.BlueXLight, text: Colors.White },
-  neutral: { bg: Colors.White, action: Colors.GrayLight, border: Colors.GrayLight, text: Colors.Gray },
+  neutral: { bg: Colors.White, action: Colors.GrayLight, border: Colors.GrayLight, text: Colors.GrayDark },
 };
 
 interface ButtonProps {
