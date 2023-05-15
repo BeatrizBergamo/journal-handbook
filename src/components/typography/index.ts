@@ -34,6 +34,13 @@ export const Label = styled.label<{ color?: string }>`
   color: ${(props) => props.color ?? Colors.GrayDark};
 `;
 
+export const Caption = styled.span`
+  font-size: ${FontSize.XSmall};
+  font-family: ${FontFamily.Primary};
+  font-weight: ${FontWeight.Lighter};
+  color: ${Colors.Alert};
+`;
+
 export const Body = styled.p`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
