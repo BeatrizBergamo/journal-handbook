@@ -1,16 +1,17 @@
-import { KabanCard } from "@components/card";
-import { Colors, strings } from "@components/constants";
-import { Kanban, KanbanColumn } from "@components/kanban";
+import { strings } from "@components/constants";
+import { Kanban } from "@components/kanban";
+import { TaskStatus } from "@domain/model";
+import { KanbanColumnContainer } from "./kanban-column.container";
+import { TaskProvider } from "@components/task";
 
 export const KanbanContainer = () => {
   return (
-    <Kanban title={strings.wishlist.title}>
-      <KanbanColumn label={strings.kanban.columns[0]}>
-        <KabanCard />
-        <KabanCard />
-      </KanbanColumn>
-      <KanbanColumn label={strings.kanban.columns[1]} color={Colors.BlueLight} />
-      <KanbanColumn label={strings.kanban.columns[2]} color={Colors.Green} />
-    </Kanban>
+    <TaskProvider>
+      <Kanban title={strings.wishlist.title}>
+        <KanbanColumnContainer status={TaskStatus.ToDo} />
+        <KanbanColumnContainer status={TaskStatus.InProgress} />
+        <KanbanColumnContainer status={TaskStatus.Completed} />
+      </Kanban>
+    </TaskProvider>
   );
 };

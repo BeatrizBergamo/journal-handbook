@@ -16,8 +16,8 @@ const FlexStyled = styled.div`
 const FlexItem = styled.div<FlexItemProps>`
   display: flex;
   flex-direction: column;
-  justify-content: ${(props) => props.hAlign ?? "stretch"};
-  align-items: ${(props) => props.vAlign ?? "center"};
+  justify-content: ${(props) => props.vAlign ?? "stretch"};
+  align-items: ${(props) => props.hAlign ?? "center"};
   flex: ${(props) => (props.noGrow ? null : props.flex ?? 1)};
 `;
 

@@ -9,14 +9,15 @@ interface KanbanColumnProps {
   label: string;
   icon?: keyof typeof FaIcon;
   color?: string;
+  onAddTask?(): void;
   children?: React.ReactNode;
 }
 
-export const KanbanColumn: React.FC<KanbanColumnProps> = ({ label, icon, color, children }) => {
+export const KanbanColumn: React.FC<KanbanColumnProps> = (props) => {
   const [hover, setHover] = React.useState(false);
 
-  const Icon = icon && FaIcon[icon];
-  const iconColor = color ?? Colors.GrayDark;
+  const Icon = props.icon && FaIcon[props.icon];
+  const iconColor = props.color ?? Colors.GrayDark;
 
   return (
     <KanbanColumnWrapper>
@@ -26,16 +27,16 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ label, icon, color, 
             <Icon color={iconColor} />
           </Flex.Item>
         )}
-        <Flex.Item vAlign="flex-start">
-          <Label color={color}>{label}</Label>
+        <Flex.Item hAlign="flex-start">
+          <Label color={props.color}>{props.label}</Label>
         </Flex.Item>
         {hover && (
           <Flex.Item noGrow style={{ cursor: "pointer" }}>
-            <FaIcon.Plus color={Colors.Gray} size="sm" />
+            <FaIcon.Plus color={Colors.Gray} size="sm" onClick={props.onAddTask} />
           </Flex.Item>
         )}
       </Flex>
-      {children}
+      {props.children}
     </KanbanColumnWrapper>
   );
 };

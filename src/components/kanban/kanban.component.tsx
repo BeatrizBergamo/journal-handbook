@@ -1,10 +1,9 @@
 import React from "react";
 
 import { Divider, Separator } from "@components/box";
-import { Spacing } from "@components/constants";
-import { H2 } from "@components/typography";
-import { strings } from "@components/constants";
+import { Spacing, strings } from "@components/constants";
 import { Flex } from "@components/flex";
+import { H2 } from "@components/typography";
 import { AddColumnButton, KanbanColumnsWrapper, KanbanWrapper } from "./kanban.component.styled";
 
 interface KanbanProps {
@@ -16,10 +15,10 @@ export const Kanban: React.FC<KanbanProps> = ({ title, children }) => {
   return (
     <KanbanWrapper>
       <Flex>
-        <Flex.Item vAlign="flex-start">
+        <Flex.Item hAlign="flex-start">
           <H2>{title}</H2>
         </Flex.Item>
-        <Flex.Item vAlign="flex-end" hAlign="flex-end" noGrow>
+        <Flex.Item hAlign="flex-end" vAlign="flex-end" noGrow>
           <AddColumnButton variant="callToAction">{strings.kanban.addColumn}</AddColumnButton>
         </Flex.Item>
       </Flex>
