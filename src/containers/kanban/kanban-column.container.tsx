@@ -17,15 +17,22 @@ const columnPropsMap: Record<TaskStatus, { label: string; color: string }> = {
 };
 
 export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ status }) => {
-  const { getTasks } = React.useContext(TasksContext);
+  const { getTasks, addTask } = React.useContext(TasksContext);
+  const [createTask, setCreateTask] = React.useState(false);
 
   const tasks = React.useMemo(() => getTasks(status), [getTasks, status]);
 
+  function handleCreatedTask(taskTitle?: string) {
+    addTask({ title: taskTitle || strings.card.defaultTitle, status });
+    setCreateTask(false);
+  }
+
   return (
-    <KanbanColumn {...columnPropsMap[status]}>
+    <KanbanColumn {...columnPropsMap[status]} onAddTask={() => setCreateTask(true)}>
       {tasks.map((task) => (
         <KabanCard key={task.title} title={task.title} />
       ))}
+      {createTask && <KabanCard onCreatedTask={handleCreatedTask} focus />}
     </KanbanColumn>
   );
 };

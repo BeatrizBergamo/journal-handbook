@@ -7,6 +7,7 @@ export interface TasksContextProps {
   task: TaskModel | null;
   setTask(task: TaskModel): void;
   setTasks(tasks: TaskModel[]): void;
+  addTask(task: TaskModel): void;
   getTasks(status: TaskStatus | TaskStatus[]): TaskModel[];
 }
 
@@ -15,5 +16,6 @@ export const TasksContext = React.createContext<TasksContextProps>({
   task: null,
   setTask: () => null,
   setTasks: () => null,
+  addTask: () => null,
   getTasks: () => [],
 });

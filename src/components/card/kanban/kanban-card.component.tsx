@@ -1,16 +1,24 @@
 import React from "react";
 
-import { H3 } from "@components/typography";
+import { H4 } from "@components/typography";
 import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.styled";
 import { strings } from "@components/constants";
 
 interface KanbanCardProps {
   title?: string;
+  onCreatedTask?(title: string): void;
+  focus?: boolean;
 }
 
-export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
-  const [cardTitle, setCardTitle] = React.useState<string>();
+export const KabanCard: React.FC<KanbanCardProps> = ({ title, focus, onCreatedTask }) => {
+  const [cardTitle, setCardTitle] = React.useState<string>("");
   const cardRef = React.useRef<HTMLDivElement>({} as HTMLDivElement);
+
+  React.useEffect(() => {
+    if (focus) {
+      cardRef.current.focus();
+    }
+  }, [focus]);
 
   function handleChange(event: React.ChangeEvent<HTMLDivElement>) {
     setCardTitle(event.target.innerHTML ?? "");
@@ -19,7 +27,7 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
   return (
     <KabanCardWrapper draggable>
       {title ? (
-        <H3>{title}</H3>
+        <H4>{title}</H4>
       ) : (
         <KanbanCardTitle
           selected={!cardTitle}
@@ -27,6 +35,7 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
           placeholder={strings.card.placeholder}
           contentEditable
           onInput={handleChange}
+          onBlur={() => onCreatedTask?.(cardTitle)}
         />
       )}
     </KabanCardWrapper>

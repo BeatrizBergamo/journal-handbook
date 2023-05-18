@@ -17,8 +17,15 @@ export const TaskProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     [tasks],
   );
 
+  const addTask = React.useCallback(
+    (newTask: TaskModel) => {
+      setTasks((prev) => [...prev, newTask]);
+    },
+    [setTasks],
+  );
+
   return (
-    <TasksContext.Provider value={{ task, tasks, setTask, setTasks, getTasks }}>
+    <TasksContext.Provider value={{ task, tasks, setTask, setTasks, getTasks, addTask }}>
       {children}
     </TasksContext.Provider>
   );
