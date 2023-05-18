@@ -1,19 +1,30 @@
 import { BodySecondary, H3 } from "@components/typography";
 import React from "react";
-import { CardImage, WishlistCardContentWrapper, WishlistCardWrapper } from "./wishlist-card.component.styled";
+import {
+  CardImage,
+  WishlistCardContentWrapper,
+  WishlistCardWrapper,
+} from "./wishlist-card.component.styled";
 import { Separator } from "@components/box";
 import { Spacing } from "@components/constants";
 
 interface WishlistCardProps {
+  id: string | number;
   title: string;
   description?: string;
   imageUrl?: string;
-  onClick(title: string): void;
+  onClick(id: string | number): void;
 }
 
-export const WishlistCard: React.FC<WishlistCardProps> = ({ title, description, imageUrl, onClick }) => {
+export const WishlistCard: React.FC<WishlistCardProps> = ({
+  id,
+  title,
+  description,
+  imageUrl,
+  onClick,
+}) => {
   return (
-    <WishlistCardWrapper onClick={() => onClick(title)}>
+    <WishlistCardWrapper onClick={() => onClick(id)}>
       <CardImage src={imageUrl} />
       <WishlistCardContentWrapper>
         <H3>{title}</H3>

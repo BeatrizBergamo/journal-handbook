@@ -1,5 +1,6 @@
-import { Body } from "@components/typography";
 import React from "react";
+
+import { H3 } from "@components/typography";
 import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.styled";
 import { strings } from "@components/constants";
 
@@ -16,9 +17,9 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title }) => {
   }
 
   return (
-    <KabanCardWrapper>
+    <KabanCardWrapper draggable>
       {title ? (
-        <Body>{title}</Body>
+        <H3>{title}</H3>
       ) : (
         <KanbanCardTitle
           selected={!cardTitle}

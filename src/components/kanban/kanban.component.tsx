@@ -1,10 +1,9 @@
 import React from "react";
 
 import { Divider, Separator } from "@components/box";
-import { Spacing } from "@components/constants";
-import { H2 } from "@components/typography";
-import { strings } from "@components/constants";
+import { Spacing, strings } from "@components/constants";
 import { Flex } from "@components/flex";
+import { H2 } from "@components/typography";
 import { AddColumnButton, KanbanColumnsWrapper, KanbanWrapper } from "./kanban.component.styled";
 
 interface KanbanProps {

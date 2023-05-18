@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "title": "Comprar um sofá",
+      "description": "Descricao da tarefa de comprar um sofá",
+      "status": "ToDo"
+    },
+    {
+      "title": "Comprar um aspirador robô",
+      "description": "Descricao da tarefa de comprar um aspirador robô",
+      "status": "ToDo"
+    },
+    {
+      "title": "Cuidar dos cachorros da Dog Hero",
+      "description": "Descricao da tarefa de cuidar dos cachorros da Dog Hero",
+      "status": "InProgress"
+    },
+    {
+      "title": "Comprar panela de pressão",
+      "description": "Descricao da tarefa de comprar panela de pressão",
+      "status": "Completed"
+    }
+  ]
+}
