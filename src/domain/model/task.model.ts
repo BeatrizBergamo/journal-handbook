@@ -4,7 +4,11 @@ export enum TaskStatus {
   Completed = "Completed",
 }
 
+// todo -> use server id when the server was integrated
+export type TaskId = string | number;
+
 export interface TaskModel {
+  id: TaskId;
   title: string;
   description?: string;
   status: TaskStatus;

@@ -1,8 +1,9 @@
 import React from "react";
 
+import { strings } from "@components/constants";
 import { Modal } from "@components/modal";
 import { TasksContext } from "@components/task";
-import { H2 } from "@components/typography";
+import { TaskTitle } from "./task-modal.container.styled";
 
 interface TaskModalContainerProps {
   onClose(open: false): void;
@@ -10,7 +11,8 @@ interface TaskModalContainerProps {
 }
 
 export const TaskModalContainer: React.FC<TaskModalContainerProps> = ({ show, onClose }) => {
-  const { task } = React.useContext(TasksContext);
+  const { task, updateTask } = React.useContext(TasksContext);
+  const [updatedTaskTitle, setUpdatedTaskTitle] = React.useState<string>();
 
   if (!task) {
     throw new Error(
@@ -18,9 +20,24 @@ export const TaskModalContainer: React.FC<TaskModalContainerProps> = ({ show, on
     );
   }
 
+  function handleChange(event: React.ChangeEvent<HTMLDivElement>) {
+    setUpdatedTaskTitle(event.target.innerHTML ?? "");
+  }
+
+  function handleBlur() {
+    updateTask(task!.id, { title: updatedTaskTitle ?? strings.card.defaultTitle });
+  }
+
   return (
     <Modal show={show} onClose={onClose} type="aside">
-      <H2>{task.title}</H2>
+      <TaskTitle
+        contentEditable
+        onInput={handleChange}
+        onBlur={handleBlur}
+        suppressContentEditableWarning
+      >
+        {task.title}
+      </TaskTitle>
     </Modal>
   );
 };

@@ -5,15 +5,18 @@ import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.style
 import { Colors, strings } from "@components/constants";
 import { Flex } from "@components/flex";
 import { FaIcon } from "@components/fa-icon";
+import { TaskId } from "@domain/model";
 
 interface KanbanCardProps {
   title?: string;
+  id?: TaskId;
   onCreatedTask?(title: string): void;
-  onOpenDetails?(title?: string): void;
+  onOpenDetails?(id?: TaskId): void;
   focus?: boolean;
 }
 
 export const KabanCard: React.FC<KanbanCardProps> = ({
+  id,
   title,
   focus,
   onCreatedTask,
@@ -34,7 +37,7 @@ export const KabanCard: React.FC<KanbanCardProps> = ({
   }
 
   return (
-    <KabanCardWrapper draggable onClick={() => onOpenDetails?.(title)}>
+    <KabanCardWrapper draggable onClick={() => onOpenDetails?.(id)}>
       {title ? (
         <Flex onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
           <Flex.Item hAlign="flex-start">

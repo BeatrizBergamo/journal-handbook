@@ -18,7 +18,6 @@ export const KabanCardWrapper = styled.div`
 `;
 
 export const KanbanCardTitle = styled.div<{ selected: boolean }>`
-  border: none;
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Medium};
