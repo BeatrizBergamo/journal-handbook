@@ -28,7 +28,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ title, icon, path }) =
   return (
     <SidebarItemWrapper to={path}>
       <Flex>
-        <Flex.Item noGrow hAlign="center">
+        <Flex.Item noGrow vAlign="center">
           <FaIcon.ChevronRight size="2xs" color={color} />
         </Flex.Item>
         <Flex.Separator size={Spacing.Small} />
@@ -36,7 +36,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ title, icon, path }) =
           <Icon color={color} />
         </Flex.Item>
         <Flex.Separator />
-        <Flex.Item vAlign="flex-start">
+        <Flex.Item hAlign="flex-start">
           <H3 color={color}>{title}</H3>
         </Flex.Item>
       </Flex>

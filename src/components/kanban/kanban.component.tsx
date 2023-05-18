@@ -15,10 +15,10 @@ export const Kanban: React.FC<KanbanProps> = ({ title, children }) => {
   return (
     <KanbanWrapper>
       <Flex>
-        <Flex.Item vAlign="flex-start">
+        <Flex.Item hAlign="flex-start">
           <H2>{title}</H2>
         </Flex.Item>
-        <Flex.Item vAlign="flex-end" hAlign="flex-end" noGrow>
+        <Flex.Item hAlign="flex-end" vAlign="flex-end" noGrow>
           <AddColumnButton variant="callToAction">{strings.kanban.addColumn}</AddColumnButton>
         </Flex.Item>
       </Flex>

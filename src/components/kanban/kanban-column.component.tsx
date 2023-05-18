@@ -27,7 +27,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = (props) => {
             <Icon color={iconColor} />
           </Flex.Item>
         )}
-        <Flex.Item vAlign="flex-start">
+        <Flex.Item hAlign="flex-start">
           <Label color={props.color}>{props.label}</Label>
         </Flex.Item>
         {hover && (

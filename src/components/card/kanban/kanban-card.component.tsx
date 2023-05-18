@@ -2,7 +2,9 @@ import React from "react";
 
 import { H4 } from "@components/typography";
 import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.styled";
-import { strings } from "@components/constants";
+import { Colors, strings } from "@components/constants";
+import { Flex } from "@components/flex";
+import { FaIcon } from "@components/fa-icon";
 
 interface KanbanCardProps {
   title?: string;
@@ -12,6 +14,7 @@ interface KanbanCardProps {
 
 export const KabanCard: React.FC<KanbanCardProps> = ({ title, focus, onCreatedTask }) => {
   const [cardTitle, setCardTitle] = React.useState<string>("");
+  const [hover, setHover] = React.useState(false);
   const cardRef = React.useRef<HTMLDivElement>({} as HTMLDivElement);
 
   React.useEffect(() => {
@@ -27,7 +30,16 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title, focus, onCreatedTa
   return (
     <KabanCardWrapper draggable>
       {title ? (
-        <H4>{title}</H4>
+        <Flex onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+          <Flex.Item hAlign="flex-start">
+            <H4>{title}</H4>
+          </Flex.Item>
+          {hover && (
+            <Flex.Item hAlign="flex-start" vAlign="flex-start" noGrow>
+              <FaIcon.Options size="sm" color={Colors.Gray} style={{ cursor: "pointer" }} />
+            </Flex.Item>
+          )}
+        </Flex>
       ) : (
         <KanbanCardTitle
           selected={!cardTitle}
