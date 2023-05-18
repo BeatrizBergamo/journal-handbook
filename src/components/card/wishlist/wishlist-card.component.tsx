@@ -7,13 +7,14 @@ import {
 } from "./wishlist-card.component.styled";
 import { Separator } from "@components/box";
 import { Spacing } from "@components/constants";
+import { CategoryId } from "@domain/model";
 
 interface WishlistCardProps {
-  id: string | number;
+  id: CategoryId;
   title: string;
   description?: string;
   imageUrl?: string;
-  onClick(id: string | number): void;
+  onClick(id: CategoryId): void;
 }
 
 export const WishlistCard: React.FC<WishlistCardProps> = ({

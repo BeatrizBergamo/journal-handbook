@@ -1,22 +1,29 @@
 import React from "react";
 
 import { Divider, Separator } from "@components/box";
-import { Spacing, strings } from "@components/constants";
+import { Colors, Spacing, strings } from "@components/constants";
 import { Flex } from "@components/flex";
-import { H2 } from "@components/typography";
+import { BodySecondary, H2 } from "@components/typography";
 import { AddColumnButton, KanbanColumnsWrapper, KanbanWrapper } from "./kanban.component.styled";
+import { useParams } from "react-router-dom";
+import { categoryMock } from "@data/mock";
 
 interface KanbanProps {
-  title: string;
   children?: React.ReactNode;
 }
 
-export const Kanban: React.FC<KanbanProps> = ({ title, children }) => {
+export const Kanban: React.FC<KanbanProps> = ({ children }) => {
+  const { categoryId } = useParams();
+
+  const category = categoryMock.categories.find((data) => data.id == categoryId);
+
   return (
     <KanbanWrapper>
       <Flex>
         <Flex.Item hAlign="flex-start">
-          <H2>{title}</H2>
+          <H2>{category?.title}</H2>
+          <BodySecondary color={Colors.GrayDark}>{category?.description}</BodySecondary>
+          <Separator />
         </Flex.Item>
         <Flex.Item hAlign="flex-end" vAlign="flex-end" noGrow>
           <AddColumnButton variant="callToAction">{strings.kanban.addColumn}</AddColumnButton>

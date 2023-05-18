@@ -5,7 +5,7 @@ import { Carousel } from "@components/carousel";
 import { strings } from "@components/constants";
 import { H1 } from "@components/typography";
 import { WishlistModalContainer } from "@containers/wishlist-modal";
-import { WishlistCategoryModel } from "@domain/model";
+import { CategoryId, WishlistCategoryModel } from "@domain/model";
 import { useNavigate } from "react-router-dom";
 import { categoryMock } from "@data/mock";
 
@@ -14,12 +14,12 @@ export const WishlistPage = () => {
   const [cards, setCards] = React.useState<WishlistCategoryModel[]>(categoryMock.categories);
   const navigate = useNavigate();
 
-  function handleClick(categoryId: string) {
+  function handleClick(categoryId: CategoryId) {
     navigate(`/wishlist/kanban/${categoryId}`, { replace: true });
   }
 
   function handleCreateCard(data: { title: string; description?: string }) {
-    setCards((prev) => [...prev, data]);
+    setCards((prev) => [...prev, { ...data, id: prev.length + 1 }]);
     setShow(false);
   }
 
@@ -27,10 +27,10 @@ export const WishlistPage = () => {
     <>
       <H1>{strings.wishlist.title}</H1>
       <Carousel>
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           <WishlistCard
             key={card.title}
-            id={index + 1}
+            id={card.id}
             title={card.title}
             description={card.description}
             onClick={handleClick}
