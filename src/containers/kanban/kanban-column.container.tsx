@@ -23,7 +23,6 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
   const [showModal, setShowModal] = React.useState(false);
 
   const tasks = React.useMemo(() => getTasks(status), [getTasks, status]);
-  console.log(tasks);
 
   function handleCreatedTask(taskTitle?: string) {
     addTask({ title: taskTitle || strings.card.defaultTitle, status });
