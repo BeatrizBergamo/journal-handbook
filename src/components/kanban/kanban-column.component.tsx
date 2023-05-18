@@ -3,13 +3,15 @@ import { FaIcon } from "@components/fa-icon";
 import { Flex } from "@components/flex";
 import { Label } from "@components/typography";
 import React from "react";
-import { KanbanColumnWrapper } from "./kanban.component.styled";
+import { HighlightedCard, KanbanColumnWrapper } from "./kanban.component.styled";
+import { DraggableContext } from "@components/draggable";
 
 interface KanbanColumnProps {
   label: string;
   icon?: keyof typeof FaIcon;
   color?: string;
-  onAddTask?(): void;
+  onAddTask(): void;
+  isDragging?: boolean;
   children?: React.ReactNode;
 }
 
@@ -20,7 +22,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = (props) => {
   const iconColor = props.color ?? Colors.GrayDark;
 
   return (
-    <KanbanColumnWrapper>
+    <KanbanColumnWrapper drag={!!props.isDragging}>
       <Flex onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
         {Icon && (
           <Flex.Item noGrow>
@@ -36,6 +38,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = (props) => {
           </Flex.Item>
         )}
       </Flex>
+      {props.isDragging && <HighlightedCard />}
       {props.children}
     </KanbanColumnWrapper>
   );
