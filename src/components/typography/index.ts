@@ -55,9 +55,9 @@ export const Body = styled.p`
   color: ${Colors.Gray};
 `;
 
-export const BodySecondary = styled.p`
+export const BodySecondary = styled.p<{ color?: string }>`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Regular};
-  color: ${Colors.Gray};
+  color: ${(props) => props.color ?? Colors.Gray};
 `;

@@ -42,7 +42,7 @@ export const ModalWrapper = styled.dialog<{ show: boolean }>`
   }
 `;
 
-const asideWidth = "45%";
+const asideWidth = "50%";
 
 export const AsideModalWrapper = styled.aside<{ show: boolean }>`
   position: absolute;

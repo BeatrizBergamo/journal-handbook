@@ -4,7 +4,8 @@ import { KabanCard } from "@components/card";
 import { Colors, strings } from "@components/constants";
 import { KanbanColumn } from "@components/kanban";
 import { TasksContext } from "@components/task";
-import { TaskStatus } from "@domain/model";
+import { TaskModalContainer } from "@containers/task-modal";
+import { TaskId, TaskStatus } from "@domain/model";
 
 interface KanbanColumnContainerProps {
   status: TaskStatus;
@@ -17,8 +18,9 @@ const columnPropsMap: Record<TaskStatus, { label: string; color: string }> = {
 };
 
 export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ status }) => {
-  const { getTasks, addTask } = React.useContext(TasksContext);
+  const { getTasks, addTask, setTask } = React.useContext(TasksContext);
   const [createTask, setCreateTask] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
 
   const tasks = React.useMemo(() => getTasks(status), [getTasks, status]);
 
@@ -27,12 +29,23 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
     setCreateTask(false);
   }
 
+  function handleShowDetails(selectedTaskId: TaskId) {
+    setTask(tasks.find((task) => task.id === selectedTaskId));
+    setShowModal(true);
+  }
+
   return (
     <KanbanColumn {...columnPropsMap[status]} onAddTask={() => setCreateTask(true)}>
       {tasks.map((task) => (
-        <KabanCard key={task.title} title={task.title} />
+        <KabanCard
+          key={task.id}
+          id={task.id}
+          title={task.title}
+          onOpenDetails={handleShowDetails}
+        />
       ))}
       {createTask && <KabanCard onCreatedTask={handleCreatedTask} focus />}
+      {showModal && <TaskModalContainer show={showModal} onClose={setShowModal} />}
     </KanbanColumn>
   );
 };
