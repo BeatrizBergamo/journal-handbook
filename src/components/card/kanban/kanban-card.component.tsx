@@ -9,10 +9,16 @@ import { FaIcon } from "@components/fa-icon";
 interface KanbanCardProps {
   title?: string;
   onCreatedTask?(title: string): void;
+  onOpenDetails?(title?: string): void;
   focus?: boolean;
 }
 
-export const KabanCard: React.FC<KanbanCardProps> = ({ title, focus, onCreatedTask }) => {
+export const KabanCard: React.FC<KanbanCardProps> = ({
+  title,
+  focus,
+  onCreatedTask,
+  onOpenDetails,
+}) => {
   const [cardTitle, setCardTitle] = React.useState<string>("");
   const [hover, setHover] = React.useState(false);
   const cardRef = React.useRef<HTMLDivElement>({} as HTMLDivElement);
@@ -28,7 +34,7 @@ export const KabanCard: React.FC<KanbanCardProps> = ({ title, focus, onCreatedTa
   }
 
   return (
-    <KabanCardWrapper draggable>
+    <KabanCardWrapper draggable onClick={() => onOpenDetails?.(title)}>
       {title ? (
         <Flex onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
           <Flex.Item hAlign="flex-start">

@@ -4,8 +4,8 @@ import { TaskModel, TaskStatus } from "@domain/model";
 
 export interface TasksContextProps {
   tasks: TaskModel[];
-  task: TaskModel | null;
-  setTask(task: TaskModel): void;
+  task: TaskModel | undefined;
+  setTask(task?: TaskModel): void;
   setTasks(tasks: TaskModel[]): void;
   addTask(task: TaskModel): void;
   getTasks(status: TaskStatus | TaskStatus[]): TaskModel[];
@@ -13,7 +13,7 @@ export interface TasksContextProps {
 
 export const TasksContext = React.createContext<TasksContextProps>({
   tasks: [],
-  task: null,
+  task: undefined,
   setTask: () => null,
   setTasks: () => null,
   addTask: () => null,

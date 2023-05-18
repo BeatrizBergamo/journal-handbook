@@ -5,7 +5,7 @@ import { TasksContext } from "./task.context";
 import { tasksMock } from "@data/mock";
 
 export const TaskProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [task, setTask] = React.useState<TaskModel>({} as TaskModel);
+  const [task, setTask] = React.useState<TaskModel>();
   const [tasks, setTasks] = React.useState<TaskModel[]>(tasksMock.tasks);
 
   const getTasks = React.useCallback(
