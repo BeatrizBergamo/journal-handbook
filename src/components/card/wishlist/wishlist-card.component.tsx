@@ -1,13 +1,14 @@
-import { BodySecondary, H3 } from "@components/typography";
 import React from "react";
+
+import { Separator } from "@components/box";
+import { Spacing } from "@components/constants";
+import { BodySecondary, H3 } from "@components/typography";
+import { CategoryId } from "@domain/model";
 import {
   CardImage,
   WishlistCardContentWrapper,
   WishlistCardWrapper,
 } from "./wishlist-card.component.styled";
-import { Separator } from "@components/box";
-import { Spacing } from "@components/constants";
-import { CategoryId } from "@domain/model";
 
 interface WishlistCardProps {
   id: CategoryId;

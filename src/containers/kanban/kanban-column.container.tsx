@@ -15,7 +15,7 @@ interface KanbanColumnContainerProps {
 
 const columnPropsMap: Record<TaskStatus, { label: string; color: string }> = {
   [TaskStatus.ToDo]: { label: strings.kanban.columns[0], color: Colors.GrayDark },
-  [TaskStatus.InProgress]: { label: strings.kanban.columns[1], color: Colors.BlueLight },
+  [TaskStatus.InProgress]: { label: strings.kanban.columns[1], color: Colors.Blue },
   [TaskStatus.Completed]: { label: strings.kanban.columns[2], color: Colors.Green },
 };
 
@@ -71,7 +71,6 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
     <KanbanColumnContainerWrapper
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
-      isDragging={mouseEnter}
     >
       <KanbanColumn {...columnPropsMap[status]} onAddTask={handleAddTask} isDragging={mouseEnter}>
         {tasks.map((task) => (
