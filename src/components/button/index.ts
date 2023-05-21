@@ -5,11 +5,34 @@ const buttonHeight = "32px";
 
 type ButtonVariants = "primary" | "secondary" | "callToAction" | "neutral";
 
-const buttonVariants: Record<ButtonVariants, { bg: string; action: string; border: string; text: string }> = {
-  primary: { bg: Colors.Blue, action: Colors.BlueDark, border: Colors.Blue, text: Colors.White },
-  secondary: { bg: Colors.GrayXLight, action: Colors.Blue, border: Colors.Blue, text: Colors.GrayDark },
-  callToAction: { bg: Colors.BlueXLight, action: Colors.BlueXLight, border: Colors.BlueXLight, text: Colors.White },
-  neutral: { bg: Colors.White, action: Colors.GrayLight, border: Colors.GrayLight, text: Colors.GrayDark },
+const buttonVariants: Record<
+  ButtonVariants,
+  { bg: string; action: string; border: string; text: string }
+> = {
+  primary: {
+    bg: Colors.BlueXLight,
+    action: Colors.BlueXDark,
+    border: Colors.BlueXLight,
+    text: Colors.White,
+  },
+  secondary: {
+    bg: Colors.GrayXLight,
+    action: Colors.BlueXLight,
+    border: Colors.BlueXLight,
+    text: Colors.GrayDark,
+  },
+  callToAction: {
+    bg: Colors.BlueLight,
+    action: Colors.BlueLight,
+    border: Colors.BlueLight,
+    text: Colors.White,
+  },
+  neutral: {
+    bg: Colors.White,
+    action: Colors.GrayLight,
+    border: Colors.GrayLight,
+    text: Colors.GrayDark,
+  },
 };
 
 interface ButtonProps {
