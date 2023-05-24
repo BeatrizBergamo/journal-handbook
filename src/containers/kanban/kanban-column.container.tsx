@@ -69,7 +69,6 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
 
   return (
     <KanbanColumnContainerWrapper
-      onMouseEnter={handleDragEnter}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       isDragging={mouseEnter}
