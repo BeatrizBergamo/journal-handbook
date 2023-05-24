@@ -16,7 +16,11 @@ interface WishlistModalContainerProps {
   show: boolean;
 }
 
-export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = ({ onCompleted, onCancel, show }) => {
+export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = ({
+  onCompleted,
+  onCancel,
+  show,
+}) => {
   function handleSubmit(formData: FormData<WishlistCategoryModel>) {
     if (Object.keys(formData.errors).length === 0) {
       onCompleted(formData.data);
@@ -27,12 +31,16 @@ export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = ({ 
     <Modal show={show} onClose={onCancel} type="normal">
       <H2>{strings.wishlist.modal.title}</H2>
       <Form onSubmit={handleSubmit}>
-        <Form.Field name="title" label={strings.wishlist.modal.label.title} validators={[FormValidators.Required]}>
+        <Form.Field
+          name="title"
+          label={strings.wishlist.modal.label.title}
+          validators={[FormValidators.Required]}
+        >
           <TextField placeholder={strings.wishlist.modal.placeholder.title} />
         </Form.Field>
         <Separator />
         <Form.Field name="description" label={strings.wishlist.modal.label.description}>
-          <TextAreaField resizable={false} placeholder={strings.wishlist.modal.placeholder.description} />
+          <TextAreaField placeholder={strings.wishlist.modal.placeholder.description} />
         </Form.Field>
         <Flex>
           <Flex.Item />

@@ -9,6 +9,7 @@ import { TasksContext } from "@components/task";
 import { Body, BodySecondary } from "@components/typography";
 import { TaskTitle } from "./task-modal.container.styled";
 import { tagColors } from "@components/tag/tag.component.styled";
+import { TextAreaField } from "@components/text-field";
 
 interface TaskModalContainerProps {
   onClose(open: false): void;
@@ -53,16 +54,21 @@ export const TaskModalContainer: React.FC<TaskModalContainerProps> = ({ show, on
           <Body>Status:</Body>
         </Flex.Item>
         <Flex.Separator />
-        {(() => {
-          const tagColor = tagColors[task.status];
-          return (
-            <Flex.Item hAlign="flex-start" vAlign="center">
-              <Tag bgColor={tagColor?.bg} textColor={tagColor?.text}>
-                {task.status}
-              </Tag>
-            </Flex.Item>
-          );
-        })()}
+        <Flex.Item hAlign="flex-start" vAlign="center">
+          <Tag bgColor={tagColors[task.status]?.bg} textColor={tagColors[task.status]?.text}>
+            {task.status}
+          </Tag>
+        </Flex.Item>
+      </Flex>
+      <Separator size={Spacing.Small} />
+      <Flex>
+        <Flex.Item noGrow vAlign="flex-start">
+          <Body>Referencias:</Body>
+        </Flex.Item>
+        <Flex.Separator />
+        <Flex.Item vAlign="flex-start">
+          <TextAreaField />
+        </Flex.Item>
       </Flex>
     </Modal>
   );
