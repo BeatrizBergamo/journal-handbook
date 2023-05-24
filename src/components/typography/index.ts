@@ -5,7 +5,7 @@ export const H1 = styled.h1`
   font-size: ${FontSize.XLarge};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Bold};
-  color: ${Colors.Blue};
+  color: ${Colors.BlueXLight};
   margin-block-start: ${Spacing.Medium};
   margin-block-end: ${Spacing.Small};
   line-height: 1.2;
@@ -48,16 +48,23 @@ export const Caption = styled.span`
   color: ${Colors.Alert};
 `;
 
-export const Body = styled.p`
+export const Body = styled.p<{ color?: string }>`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Medium};
-  color: ${Colors.Gray};
+  color: ${(props) => props.color ?? Colors.GrayXDark};
 `;
 
 export const BodySecondary = styled.p<{ color?: string }>`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Regular};
-  color: ${(props) => props.color ?? Colors.Gray};
+  color: ${(props) => props.color ?? Colors.GrayDark};
+`;
+
+export const TagLabel = styled.p<{ color: string }>`
+  font-size: ${FontSize.XSmall};
+  font-family: ${FontFamily.Primary};
+  font-weight: ${FontWeight.Medium};
+  color: ${(props) => props.color};
 `;

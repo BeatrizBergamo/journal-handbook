@@ -8,24 +8,25 @@ export enum Spacing {
   XLarge = "64px",
 }
 
-export class Colors {
-  static readonly Black = "#0C0C0C";
-  static readonly White = "#FFF";
+export enum Colors {
+  Black = "#0C0C0C",
+  White = "#FFF",
 
-  static readonly GrayXLight = "#F4F6F8";
-  static readonly GrayLight = "#DFE4EC";
-  static readonly Gray = "#C0C0C0";
-  static readonly GrayDark = "#525252";
-  static readonly GrayXDark = "#161616";
+  GrayXLight = "#F4F6F8",
+  GrayLight = "#DFE4EC",
+  Gray = "#C0C0C0",
+  GrayDark = "#525252",
+  GrayXDark = "#161616",
 
-  static readonly BlueXLight = "#21B2FB";
-  static readonly BlueLight = "#0038D9";
-  static readonly Blue = "#8093B3";
-  static readonly BlueDark = "#0B1D51";
+  BlueXLight = "#8093B3",
+  BlueLight = "#21B2FB",
+  Blue = "#0038D9",
+  BlueXDark = "#0B1D51",
 
-  static readonly Alert = "#B31010";
-  static readonly Green = "#008000";
-  static readonly GrayTransparent = "rgba(10, 10, 10, 0.5)";
+  Alert = "#B31010",
+  GreenLight = "#8DF53D",
+  Green = "#008000",
+  GrayTransparent = "rgba(10, 10, 10, 0.5)",
 }
 
 export const Border = {
