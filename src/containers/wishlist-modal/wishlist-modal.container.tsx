@@ -2,7 +2,7 @@ import React from "react";
 
 import { Separator } from "@components/box";
 import { Button } from "@components/button";
-import { strings } from "@components/constants";
+import { appStrings } from "@components/constants";
 import { Flex } from "@components/flex";
 import { Form, FormData, FormValidators } from "@components/form";
 import { Modal } from "@components/modal";
@@ -16,35 +16,37 @@ interface WishlistModalContainerProps {
   show: boolean;
 }
 
-export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = ({ onCompleted, onCancel, show }) => {
+const strings = appStrings.wishlist.modal;
+
+export const WishlistModalContainer: React.FC<WishlistModalContainerProps> = (props) => {
   function handleSubmit(formData: FormData<WishlistCategoryModel>) {
-    if (Object.keys(formData.errors).length === 0) {
-      onCompleted(formData.data);
+    if (!Object.keys(formData.errors).length) {
+      props.onCompleted(formData.data);
     }
   }
 
   return (
-    <Modal show={show} onClose={onCancel} type="normal">
-      <H2>{strings.wishlist.modal.title}</H2>
+    <Modal show={props.show} onClose={props.onCancel} type="normal">
+      <H2>{strings.title}</H2>
       <Form onSubmit={handleSubmit}>
-        <Form.Field name="title" label={strings.wishlist.modal.label.title} validators={[FormValidators.Required]}>
-          <TextField placeholder={strings.wishlist.modal.placeholder.title} />
+        <Form.Field name="title" label={strings.label.title} validators={[FormValidators.Required]}>
+          <TextField placeholder={strings.placeholder.title} />
         </Form.Field>
         <Separator />
-        <Form.Field name="description" label={strings.wishlist.modal.label.description}>
-          <TextAreaField resizable={false} placeholder={strings.wishlist.modal.placeholder.description} />
+        <Form.Field name="description" label={strings.label.description}>
+          <TextAreaField placeholder={strings.placeholder.description} />
         </Form.Field>
         <Flex>
           <Flex.Item />
           <Flex.Item noGrow>
             <Button variant="callToAction" type="submit">
-              {strings.button.confirm}
+              {appStrings.button.confirm}
             </Button>
           </Flex.Item>
           <Flex.Separator />
           <Flex.Item noGrow>
-            <Button variant="neutral" onClick={() => onCancel(false)}>
-              {strings.button.cancel}
+            <Button variant="neutral" onClick={() => props.onCancel(false)}>
+              {appStrings.button.cancel}
             </Button>
           </Flex.Item>
           <Flex.Item />

@@ -1,4 +1,6 @@
-export const strings = {
+import { TaskStatus } from "@domain/model";
+
+export const appStrings = {
   wishlist: {
     title: "Lista de desejos",
     sidebar: "Lista de desejos",
@@ -15,7 +17,14 @@ export const strings = {
     },
   },
   todo: { title: "To-do-list", sidebar: "To-do-list" },
-  kanban: { columns: ["To-do", "In Progress", "Completed"], addColumn: "Nova coluna" },
+  kanban: {
+    columns: {
+      [TaskStatus.ToDo]: "A fazer",
+      [TaskStatus.InProgress]: "Em progresso",
+      [TaskStatus.Completed]: "Completo",
+    } satisfies Record<TaskStatus, string>,
+    addColumn: "Nova coluna",
+  },
   timeline: { title: "Linha do tempo", sidebar: "Linha do tempo" },
   card: { placeholder: "Digite o título...", assignes: "Adicionar dono", defaultTitle: "Untitled" },
   form: { validators: { required: "Campo obrigatório." } },
@@ -23,4 +32,9 @@ export const strings = {
     confirm: "Confirmar",
     cancel: "Cancelar",
   },
+  defaultKanbanColumns: {
+    [TaskStatus.ToDo]: "A fazer",
+    [TaskStatus.InProgress]: "Em progresso",
+    [TaskStatus.Completed]: "Completo",
+  } satisfies Record<TaskStatus, string>,
 };

@@ -6,7 +6,7 @@ const textFieldCss = css`
   width: 100%;
   border-radius: ${Border.Radius};
   color: ${Colors.GrayXDark};
-  font-size: ${FontSize.Small};
+  font-size: ${FontSize.XSmall};
   font-weight: ${FontWeight.Regular};
   font-family: ${FontFamily.Primary};
   padding-left: ${Spacing.Small};
@@ -22,5 +22,5 @@ const textAreaHeight = "80px";
 export const TextAreaFieldStyled = styled.textarea<{ resizable?: boolean }>`
   ${textFieldCss}
   height: ${textAreaHeight};
-  ${(props) => (props.resizable != null && !props.resizable ? "resize: none;" : null)}
+  ${(props) => (!props.resizable ? "resize: none;" : null)}
 `;

@@ -2,7 +2,7 @@ import React from "react";
 
 import { H4 } from "@components/typography";
 import { KanbanCardTitle, KabanCardWrapper } from "./kanban-card.component.styled";
-import { Colors, strings } from "@components/constants";
+import { Colors, appStrings } from "@components/constants";
 import { Flex } from "@components/flex";
 import { FaIcon } from "@components/fa-icon";
 import { TaskId, TaskModel } from "@domain/model";
@@ -63,7 +63,7 @@ export const KabanCard: React.FC<KanbanCardProps> = ({
         <KanbanCardTitle
           selected={!cardTitle}
           ref={cardRef}
-          placeholder={strings.card.placeholder}
+          placeholder={appStrings.card.placeholder}
           contentEditable
           onInput={handleChange}
           onBlur={() => onCreatedTask?.(cardTitle)}

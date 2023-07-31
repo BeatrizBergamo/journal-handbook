@@ -1,7 +1,7 @@
 import React from "react";
 
 import { KabanCard } from "@components/card";
-import { Colors, strings } from "@components/constants";
+import { Colors, appStrings } from "@components/constants";
 import { KanbanColumn } from "@components/kanban";
 import { TasksContext } from "@components/task";
 import { TaskModalContainer } from "@containers/task-modal";
@@ -13,23 +13,31 @@ interface KanbanColumnContainerProps {
   status: TaskStatus;
 }
 
+const strings = appStrings.kanban;
+
 const columnPropsMap: Record<TaskStatus, { label: string; color: string }> = {
-  [TaskStatus.ToDo]: { label: strings.kanban.columns[0], color: Colors.GrayDark },
-  [TaskStatus.InProgress]: { label: strings.kanban.columns[1], color: Colors.BlueLight },
-  [TaskStatus.Completed]: { label: strings.kanban.columns[2], color: Colors.Green },
+  [TaskStatus.ToDo]: { label: strings.columns[TaskStatus.ToDo], color: Colors.GrayDark },
+  [TaskStatus.InProgress]: {
+    label: strings.columns[TaskStatus.InProgress],
+    color: Colors.Primary,
+  },
+  [TaskStatus.Completed]: {
+    label: strings.columns[TaskStatus.Completed],
+    color: Colors.FeedbackSuccess,
+  },
 };
 
-export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ status }) => {
+export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = (props) => {
   const { isDragging, draggableTask, setDraggableTask } = React.useContext(DraggableContext);
   const { getTasks, addTask, setTask, updateTask } = React.useContext(TasksContext);
   const [createTask, setCreateTask] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [mouseEnter, setMouseEnter] = React.useState(false);
 
-  const tasks = React.useMemo(() => getTasks(status), [getTasks, status]);
+  const tasks = React.useMemo(() => getTasks(props.status), [getTasks, props.status]);
 
   function handleCreatedTask(taskTitle?: string) {
-    addTask({ title: taskTitle || strings.card.defaultTitle, status });
+    addTask({ title: taskTitle || appStrings.card.defaultTitle, status: props.status });
     setCreateTask(false);
   }
 
@@ -42,7 +50,7 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
     if (!draggableTask) {
       setCreateTask(true);
     } else {
-      updateTask(draggableTask.id, { status });
+      updateTask(draggableTask.id, { status: props.status });
       setDraggableTask(null);
     }
   }
@@ -55,7 +63,7 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
 
   function handleDragEnter(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
-    if (isDragging && draggableTask?.status !== status) {
+    if (isDragging && draggableTask?.status !== props.status) {
       setMouseEnter(true);
     }
   }
@@ -68,12 +76,12 @@ export const KanbanColumnContainer: React.FC<KanbanColumnContainerProps> = ({ st
   }
 
   return (
-    <KanbanColumnContainerWrapper
-      onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
-      isDragging={mouseEnter}
-    >
-      <KanbanColumn {...columnPropsMap[status]} onAddTask={handleAddTask} isDragging={mouseEnter}>
+    <KanbanColumnContainerWrapper onDragEnter={handleDragEnter} onDragLeave={handleDragLeave}>
+      <KanbanColumn
+        {...columnPropsMap[props.status]}
+        onAddTask={handleAddTask}
+        isDragging={mouseEnter}
+      >
         {tasks.map((task) => (
           <KabanCard key={task.id} task={task} onOpenDetails={handleShowDetails} />
         ))}

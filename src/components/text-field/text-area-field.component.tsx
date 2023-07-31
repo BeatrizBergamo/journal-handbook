@@ -7,7 +7,11 @@ interface TextAreaFieldProps extends React.TextareaHTMLAttributes<HTMLTextAreaEl
   resizable?: boolean;
 }
 
-export const TextAreaField: React.FC<TextAreaFieldProps> = ({ onValueChange, resizable, ...props }) => {
+export const TextAreaField: React.FC<TextAreaFieldProps> = ({
+  onValueChange,
+  resizable,
+  ...props
+}) => {
   const formFieldContext = React.useContext(FormFieldContext);
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -25,11 +29,13 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({ onValueChange, res
     onValueChange?.(value);
   }
 
+  const value = props.value?.toString() ?? formFieldContext?.value?.toString();
+
   return (
     <TextAreaFieldStyled
       {...props}
       resizable={resizable}
-      value={props.value?.toString() ?? formFieldContext?.value?.toString() ?? ""}
+      value={value ?? undefined}
       onChange={handleChange}
     />
   );
