@@ -44,7 +44,7 @@ export const useCloseEvent: CloseEventHook = ({ closeFun, events }) => {
     addEventListeners();
 
     return removeEventListeners;
-  }, [elementRef]);
+  }, [elementRef, closeFun, events]);
 
   return elementRef;
 };
