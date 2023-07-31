@@ -1,7 +1,12 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import { AsideModalWrapper, ModalBgWrapper, ModalCloseButton, ModalWrapper } from "./modal.component.styled";
-import { useClickOutsideToClose } from "hook";
+import {
+  AsideModalWrapper,
+  ModalBgWrapper,
+  ModalCloseButton,
+  ModalWrapper,
+} from "./modal.component.styled";
+import { useCloseEvent } from "hook";
 
 interface ModalProps {
   type: "aside" | "normal";
@@ -11,9 +16,10 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ type, show, onClose, children }) => {
-  const dialogRef = React.useRef<HTMLDialogElement>(null);
-
-  useClickOutsideToClose(dialogRef, handleClose);
+  const dialogRef = useCloseEvent<HTMLDialogElement>({
+    closeFun: onClose,
+    events: ["clickOutside", "keyboardEscape"],
+  });
 
   function handleClose() {
     onClose(false);
@@ -36,7 +42,7 @@ export const Modal: React.FC<ModalProps> = ({ type, show, onClose, children }) =
               </ModalWrapper>
             )}
           </ModalBgWrapper>,
-          document.getElementById("modal")!
+          document.getElementById("modal")!,
         )}
     </>
   );
