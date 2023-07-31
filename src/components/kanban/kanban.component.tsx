@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Divider, Separator } from "@components/box";
-import { Colors, Spacing, strings } from "@components/constants";
+import { Colors, Spacing, appStrings } from "@components/constants";
 import { Flex } from "@components/flex";
 import { BodySecondary, H2 } from "@components/typography";
 import { AddColumnButton, KanbanColumnsWrapper, KanbanWrapper } from "./kanban.component.styled";
@@ -26,7 +26,7 @@ export const Kanban: React.FC<KanbanProps> = ({ children }) => {
           <Separator />
         </Flex.Item>
         <Flex.Item hAlign="flex-end" vAlign="flex-end" noGrow>
-          <AddColumnButton variant="callToAction">{strings.kanban.addColumn}</AddColumnButton>
+          <AddColumnButton variant="callToAction">{appStrings.kanban.addColumn}</AddColumnButton>
         </Flex.Item>
       </Flex>
       <Separator size={Spacing.XSmall} />

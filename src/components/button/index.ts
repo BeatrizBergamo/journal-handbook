@@ -10,21 +10,21 @@ const buttonVariants: Record<
   { bg: string; action: string; border: string; text: string }
 > = {
   primary: {
-    bg: Colors.BlueXLight,
-    action: Colors.BlueXDark,
-    border: Colors.BlueXLight,
+    bg: Colors.PrimaryXLight,
+    action: Colors.PrimaryXDark,
+    border: Colors.PrimaryXLight,
     text: Colors.White,
   },
   secondary: {
     bg: Colors.GrayXLight,
-    action: Colors.BlueXLight,
-    border: Colors.BlueXLight,
+    action: Colors.PrimaryXLight,
+    border: Colors.PrimaryXLight,
     text: Colors.GrayDark,
   },
   callToAction: {
-    bg: Colors.BlueLight,
-    action: Colors.BlueLight,
-    border: Colors.BlueLight,
+    bg: Colors.PrimaryLight,
+    action: Colors.PrimaryLight,
+    border: Colors.PrimaryLight,
     text: Colors.White,
   },
   neutral: {

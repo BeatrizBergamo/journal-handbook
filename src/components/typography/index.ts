@@ -5,7 +5,7 @@ export const H1 = styled.h1`
   font-size: ${FontSize.XLarge};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Bold};
-  color: ${Colors.BlueXLight};
+  color: ${Colors.PrimaryXLight};
   margin-block-start: ${Spacing.Medium};
   margin-block-end: ${Spacing.Small};
   line-height: 1.2;
@@ -45,7 +45,7 @@ export const Caption = styled.span`
   font-size: ${FontSize.XSmall};
   font-family: ${FontFamily.Primary};
   font-weight: ${FontWeight.Regular};
-  color: ${Colors.Alert};
+  color: ${Colors.FeedbackAlert};
 `;
 
 export const Body = styled.p<{ color?: string }>`

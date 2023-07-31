@@ -18,20 +18,14 @@ interface WishlistCardProps {
   onClick(id: CategoryId): void;
 }
 
-export const WishlistCard: React.FC<WishlistCardProps> = ({
-  id,
-  title,
-  description,
-  imageUrl,
-  onClick,
-}) => {
+export const WishlistCard: React.FC<WishlistCardProps> = (props) => {
   return (
-    <WishlistCardWrapper onClick={() => onClick(id)}>
-      <CardImage src={imageUrl} />
+    <WishlistCardWrapper onClick={() => props.onClick(props.id)}>
+      <CardImage src={props.imageUrl} />
       <WishlistCardContentWrapper>
-        <H3>{title}</H3>
+        <H3>{props.title}</H3>
         <Separator size={Spacing.Small} />
-        {description && <BodySecondary>{description}</BodySecondary>}
+        {props.description && <BodySecondary>{props.description}</BodySecondary>}
       </WishlistCardContentWrapper>
     </WishlistCardWrapper>
   );

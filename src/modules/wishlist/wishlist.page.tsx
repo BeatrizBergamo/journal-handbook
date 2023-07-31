@@ -2,12 +2,15 @@ import React from "react";
 
 import { CreateWishlistCard, WishlistCard } from "@components/card";
 import { Carousel } from "@components/carousel";
-import { strings } from "@components/constants";
+import { appStrings } from "@components/constants";
 import { H1 } from "@components/typography";
 import { WishlistModalContainer } from "@containers/wishlist-modal";
 import { CategoryId, WishlistCategoryModel } from "@domain/model";
 import { useNavigate } from "react-router-dom";
 import { categoryMock } from "@data/mock";
+import { appRoutes } from "modules/router";
+
+const strings = appStrings.wishlist;
 
 export const WishlistPage = () => {
   const [show, setShow] = React.useState(false);
@@ -15,7 +18,7 @@ export const WishlistPage = () => {
   const navigate = useNavigate();
 
   function handleClick(categoryId: CategoryId) {
-    navigate(`/wishlist/kanban/${categoryId}`, { replace: true });
+    navigate(`${appRoutes.kanban}/${categoryId}`, { replace: true });
   }
 
   function handleCreateCard(data: { title: string; description?: string }) {
@@ -25,7 +28,7 @@ export const WishlistPage = () => {
 
   return (
     <>
-      <H1>{strings.wishlist.title}</H1>
+      <H1>{strings.title}</H1>
       <Carousel>
         {cards.map((card) => (
           <WishlistCard

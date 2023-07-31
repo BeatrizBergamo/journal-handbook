@@ -7,8 +7,10 @@ interface FormProps {
   children?: React.ReactNode;
 }
 
-const FormComponent = ({ children, onSubmit }: FormProps) => {
-  const [formData, setFormData] = React.useState<{ [fieldName: string]: FormFieldContextProps }>({});
+const FormComponent = (props: FormProps) => {
+  const [formData, setFormData] = React.useState<{ [fieldName: string]: FormFieldContextProps }>(
+    {},
+  );
 
   const register = React.useCallback(
     (field: FormFieldContextProps) => {
@@ -34,7 +36,7 @@ const FormComponent = ({ children, onSubmit }: FormProps) => {
 
     const data = getFormData();
 
-    onSubmit(data);
+    props.onSubmit(data);
   }
 
   function getFormData(): FormData<any> {
@@ -60,7 +62,7 @@ const FormComponent = ({ children, onSubmit }: FormProps) => {
 
   return (
     <FormContext.Provider value={{ register, unregister }}>
-      <form onSubmit={handleSubmit}>{children}</form>
+      <form onSubmit={handleSubmit}>{props.children}</form>
     </FormContext.Provider>
   );
 };

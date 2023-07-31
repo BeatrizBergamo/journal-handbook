@@ -17,16 +17,16 @@ export enum Colors {
   Gray = "#C0C0C0",
   GrayDark = "#525252",
   GrayXDark = "#161616",
-
-  BlueXLight = "#8093B3",
-  BlueLight = "#21B2FB",
-  Blue = "#0038D9",
-  BlueXDark = "#0B1D51",
-
-  Alert = "#B31010",
-  GreenLight = "#8DF53D",
-  Green = "#008000",
   GrayTransparent = "rgba(10, 10, 10, 0.5)",
+
+  PrimaryXLight = "#8093B3",
+  PrimaryLight = "#21B2FB",
+  Primary = "#0038D9",
+  PrimaryXDark = "#0B1D51",
+
+  FeedbackAlert = "#B31010",
+  FeedbackSuccessLight = "#32A852",
+  FeedbackSuccess = "#008000",
 }
 
 export const Border = {
